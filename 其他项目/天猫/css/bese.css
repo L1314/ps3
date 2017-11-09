@@ -1,0 +1,12 @@
+*{
+	margin: 0;/*清除body身上的，8px*/
+	text-decoration: none;/*清除a标签下滑线*/
+	padding: 0;/*inout*/
+}
+img{
+	width: 100%;
+	height: 100%;
+}
+li {
+  list-style: none;
+}

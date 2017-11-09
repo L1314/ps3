@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .box{
+            width: 1200px;
+            height: 100%;
+            background-color: #ccc;
+            margin:0 auto;
+            overflow: hidden;
+        }
+        .left{
+            height: 100%;
+            width: 1000px;
+            background-color: #b3d4fc;
+            position: relative;
+            float: left;
+            background-repeat: no-repeat;
+            background-size: contain;
+            overflow: hidden;
+        }
+        .control{
+            height: 100%;
+            width: 200px;
+            background-color: #fffdf5;
+            float: left;
+        }
+        .title,.guanka,.life,.show{
+            height: 60px;
+            width: 150px;
+            background-color: #fffdf5;
+            justify-content: space-around;
+            margin: 0 auto;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            margin-top:40px;
+        }
+        .divbox{
+            height: 130px;
+            width: 130px;
+            position:absolute;
+        }
+        .end,#pause{
+            height: 48px;
+            width: 48px;
+            background-color: #fffdf5;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            border: 2px #fffdf5 solid;
+            float: left;
+            cursor: pointer;
+            margin-left: 12px;
+            margin-right: 12px;
+        }
+        .quit,.stop{
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+        }
+        .start img{
+            overflow: hidden;
+            height: 50px;
+            width: 150px;
+            cursor: pointer;
+        }
+        .logo{
+            width: 180px;
+            height: 100px;
+            margin:20px auto;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="left"><div class=""><img src="images/bg.png" alt=""></div></div>
+    <div class="control">
+        <div class="logo"><img src="images/logo.png" alt="" class="logo"></div>
+        <div class="title">
+            得分 <span>0</span>
+        </div>
+        <div class="guanka">难度 <span>1</span> </div>
+        <div class="life">生命 <span></span> </div>
+        <div class="show">
+        <button class="start"><img src="images/start.png" alt=""></button>
+        </div>
+        <div class="show">
+        <div class="btn" id="pause"><img src="images/stop.png" alt="" class="stop"></div>
+        <button class="end" ><img src="images/quit.png" alt="" class="quit" ></button>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    class Game{
+        constructor(sence,scor,state,life){
+            this.sence=sence;
+            this.scro=scor;
+            this.scroNum=0;
+            this.state=state;
+            this.stateNum=1;
+            this.life=life;
+            this.lifeNum=5;
+            this.life.innerHTML=this.lifeNum;
+            this.flag=true;
+            this.obj={};
+            this.speed=5;
+            this.n=3;
+            this.height=window.innerHeight;
+            this.st=null;
+        }
+
+
+// divbox 盒子 objStr：盒子内容
+        _createObj(){
+
+            var divobj=document.createElement("div");
+            divobj.className="divbox";
+
+            do{
+                var objLetter=Math.floor(Math.random()*26+65);
+                var objStr=String.fromCharCode(objLetter)
+            }while(this.obj[objStr]);
+            divobj.style.background="url(images/"+objStr+".png) no-repeat center";
+            do{
+                var randomLeft=Math.floor(Math.random()*800);
+                var divLeft=divobj.style.left=randomLeft+"px"
+            }while(this._check(randomLeft));
+
+            var Top=Math.floor(Math.random()*100);
+
+            this.obj[objStr]={left:randomLeft,ele:divobj};
+//            divobj.innerHTML=objStr;
+            divobj.style.top=Top+"px";
+            this.sence.appendChild(divobj)
+        }
+
+        _check(randomLeft){
+            for(let i in this.obj){
+                if(randomLeft>this.obj[i].left-100&&randomLeft<this.obj[i].left+100){
+                    return true;
+                }
+            }
+        }
+        //字母个数
+        start(){
+            for(let i=0;i<this.n;i++){
+                this._createObj()
+            }
+            this._move();
+            this._keydown()
+
+        }
+
+        //字母降落
+        _move(){
+               this.st=setInterval(fn.bind(this),50)
+                function fn(){
+                    for(let i in this.obj){
+                        let top=this.obj[i].ele.offsetTop;
+                        top+=this.speed
+                        this.obj[i].ele.style.top=top+"px";
+                        if(top>this.height){
+                            this.lifeNum--;
+                            this.life.innerHTML=this.lifeNum;
+                            this.sence.removeChild(this.obj[i].ele)
+                            delete this.obj[i];
+                            this._createObj()
+                            if(this.lifeNum==0){
+                                this._gameover()
+                            }
+                        }
+
+
+                    }
+
+                }
+        }
+        _keydown(){
+            document.onkeydown=function(e){
+                let kc=e.keyCode;
+                let newkc=String.fromCharCode(kc);
+                if(this.obj[newkc]){
+                    this.sence.removeChild(this.obj[newkc].ele);
+                    delete this.obj[newkc];
+                    this._createObj();
+                    this.scroNum++;
+                    this.scro.innerHTML=this.scroNum;
+
+                    if(this.scroNum%10==0){
+                        //关卡
+                        this._upstate()
+                    }
+                }
+            }.bind(this);
+        }
+
+//        关卡难度函数
+        _upstate(){
+            this.n++;
+            this.state.innerHTML=this.n;
+            if(this.n<=5){
+                this._createObj()
+            }else{
+                this.speed++
+            }
+        }
+        _gameover(){
+            alert(`游戏结束，当前得分为${this.scroNum}分`);
+            this.sence.innerHTML="";
+            this.lifeNum=5;
+            this.obj={};
+
+            this.stateNum=1;
+            clearInterval(this.st);
+            this.flag=true;
+
+        }
+
+		_int(){
+            this.state.innerHTML=1;
+            this.left.innerHTML=""
+            this.scor.innerHTML=0;
+            this.lifenum=5
+            this.speed=5
+            this.statenum=1;
+            this.scornum=0;
+            this.num = 3;
+            this.obj = {};
+//            this.flag=true;
+            this.st=null;
+        }
+        pause(){
+            clearInterval(this.st)
+            document.removeEventListener("keydown",this._keydownHandlet)
+        }
+        run(){
+            this._move();
+            this._keydown();
+        }
+    }
+
+
+    
+let sence=document.querySelector(".left");
+let pauseBtn=document.querySelector("#pause");
+let scor=document.querySelector(".title span");
+let state=document.querySelector(".guanka span");
+let life=document.querySelector(".life span");
+let start=document.querySelector(".start");
+//console.log(life)
+let game=new Game(sence,scor,state,life);
+
+//    console.log(game.flag)
+    start.onclick=function(){
+        if(game.flag){
+//            console.log(game.flag)
+
+            game.flag=false;
+            game.start()
+        }
+//            console.log(game.flag)
+
+    };
+    let flag1=true;
+    pauseBtn.onclick=function () {
+        if (flag1) {
+            game.pause();//游戏暂停
+            document.getElementById("pause").innerHTML='<img src="images/continue.png" height="48" width="48" />'
+        } else {
+            game.run();//游戏继续
+            document.getElementById("pause").innerHTML='<img src="images/stop.png" height="48" width="48" />'
+        }
+        flag1 = !flag1;
+    }
+
+</script>
+</html>

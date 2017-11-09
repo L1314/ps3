@@ -1,0 +1,300 @@
+/*头部开始*/
+
+#banner{
+    width: 1903px;
+    height: 625px;
+    background-color: #00afb3;
+    position: relative;
+}
+.dtp{
+    width: 1300px;
+    height: 625px;
+    position: absolute;
+    top: 0;
+    left: 210px;
+    background-image: url("../img/pic.png");
+}
+.zsmkj{
+    /*width: 1903px;*/
+    height: 80px;
+    /*background-color: #ffffff;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.logohwz{
+    width: 1000px;
+    height: 80px;
+    /*background-color: #fff;*/
+    position: absolute;
+    top: 0;
+    left: 120px;
+}
+.xtb{
+    width: 150px;
+    height: 60px;
+    /*background-color: #00833c;*/
+    margin-top: 25px;
+    float: left;
+    z-index: 55;
+}
+.bannerwz{
+    width: 90px;
+    height: 80px;
+    /*background-color: #00833c;*/
+    float: left;
+    text-align: center;
+    line-height: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.bannerwz1{
+    margin-right: 0;
+}
+
+.bannerwz a{
+    font-size: 20px;
+    color: #ffffff;
+}
+.bannerwz a:hover{
+    color: orangered;
+}
+.y{
+    width: 1197px;
+    height: 130px;
+    /*background-color: #7f7f7c;*/
+    position: absolute;
+    left: 197px;
+    bottom: -39px;
+}
+
+
+/*第一块开始*/
+
+#dyk{
+    width: 100%;
+    height: 510px;
+    /*background-color: orange;*/
+    overflow: hidden;
+    margin-top: 80px;
+}
+.dykkj{
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    /*background-color: #aaa19a;*/
+    overflow: hidden;
+
+}
+.dyksz{
+    float: left;
+    margin-left: 15px;
+}
+.dykszs{
+    width: 201px;
+    height: 201px;
+    /*background-color: orangered;*/
+    /*margin-top: 10px;*/
+}
+.dykszx{
+    width: 201px;
+    height: 39px;
+    /*background-color: red;*/
+    color: #f48875;
+    margin-top: 35px;
+    font-size: 36px;
+    line-height: 39px;
+    text-align: center;
+}
+.dyksy{
+    width: 650px;
+    height: 342px;
+    /*background-color: rebeccapurple;*/
+    float: left;
+    margin-left: 115px;
+    font-size: 14px;
+}
+.p1{
+    height: 20px;
+}
+.dykx{
+    width: 1000px;
+    height: 154px;
+    /*background-color: red;*/
+    float: left;
+}
+.p2{
+    font-size: 18px;
+    color: #777;
+}
+.dykx1{
+    width: 970px;
+    height: 120px;
+    /*background-color: #00833c;*/
+    margin-left: 28px;
+    margin-top: 5px;
+}
+.p3{
+    font-size: 14px;
+    color: #333;
+}
+
+
+/*第二块开始*/
+#kuang{
+    width: 100%;
+    overflow: hidden;
+    background: #e8f1f4;
+}
+.derk{
+    width:1000px;
+    background: #e8f1f4;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.derkleft{
+    width: 430px;
+    height: 600px;
+    overflow: hidden;
+    float: left;
+}
+.derkleft1{
+    width: 138px;
+    height: 36px;
+    margin-top: 50px;
+}
+.derkleft2{
+    font-size: 14px;
+    padding-top: 30px;
+}
+.derkleft3{
+    font-size: 14px;
+    padding-top: 60px;
+}
+.derkright{
+    width: 567px;
+    height: 600px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+}
+.tu{
+    width: 567px;
+    height: 355px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+/* 第三块开始 */
+.dsank{
+    width:1000px;
+    background: white;
+    overflow: hidden;
+    margin: 0 auto;
+
+}
+.dsankleft{
+    width: 430px;
+    height: 600px;
+    overflow: hidden;
+    float: left;
+    padding-left: 20px;
+}
+.dsankleft1{
+    width: 138px;
+    height: 36px;
+    margin-top: 50px;
+}
+.dsankleft2{
+    font-size: 14px;
+    padding-top: 30px;
+}
+.dsankright{
+    width: 567px;
+    height: 600px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+}
+.tu2{
+    width: 423px;
+    height: 389px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+/* 第四块开始 */
+#dsik{
+    width: 1903px;
+    height: 370px;
+    background-color: #f7f7f7;
+    /* overflow: hidden; */
+    position: relative;
+}
+.dsikkj{
+    width: 1000px;
+     margin-left: 451px;
+    margin: 0 auto;
+    /*background-color: red;*/
+    overflow: hidden;
+
+
+
+}
+.dsiks{
+    width: 1000px;
+    height: 49px;
+    /*background-color: orangered;*/
+    margin-top: 65px;
+    text-align: center;
+    line-height: 49px;
+}
+.dsiks h1{
+    font-size: 45px;
+    color: #666666;
+}
+.dsikx{
+    width: 1000px;
+    height:100px;
+    /*background-color: #00833c;*/
+    margin-top: 35px;
+}
+.dsiktp{
+    width: 202px;
+    height: 92px;
+    background-color: #ffffff;
+    float: left;
+    margin-left: 39px;
+}
+.dsiktp img{
+    width: 170px;
+    height: 70px;
+    margin-top: 11px;
+    margin-left: 16px;
+}
+
+
+/*最下面开始*/
+#zxm{
+    width: 1903px;
+    height: 58px;
+    background-color: #373737;
+    text-align: center;
+    line-height: 58px;
+}
+.zxmkj{
+    width: 1000px;
+    height: 58px;
+    margin-left: 365px;
+    text-align: center;
+    line-height: 58px;
+}
+.zxmkj h5{
+    font-size: 12px;
+}
